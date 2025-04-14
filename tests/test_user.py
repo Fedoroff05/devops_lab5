@@ -31,7 +31,7 @@ def test_get_unexisted_user():
 def test_create_user_with_valid_email():
     response = client.post("/api/v1/user", json={"name": "New User", "email": "newuser@mail.com"})
     assert response.status_code == 201
-    assert "id" in response.json()
+    assert isinstance(response.json(), int)
 
 
 def test_create_user_with_invalid_email():
